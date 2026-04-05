@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['number']
+
+roboflow:
+  workspace: etbx
+  project: my-first-project-pgn5c
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/etbx/my-first-project-pgn5c/dataset/1
