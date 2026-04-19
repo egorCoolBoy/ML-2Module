@@ -1,77 +1,30 @@
-2026-04-05 14:14:24,875 | INFO | alpr.train | Training initialization started
-2026-04-05 14:14:25,531 | INFO | alpr.dataset | Dataset prepared at data\dataset | train=116 valid=33 test=17
-2026-04-05 14:24:46,288 | INFO | alpr.train | Training finished | best_weights=models\best.pt
-2026-04-05 14:24:46,289 | INFO | alpr.train | Validation metrics | {'mAP50': 0.995, 'mAP50-95': 0.5580074335782981, 'latency_ms': 60.02161764706002}
-2026-04-05 14:26:00,948 | INFO | alpr.cli | Video mode started | input=Video\5130_LA_City_1920x1080.mp4 output=Video\5130_LA_City_1920x1080_detected.mp4
-2026-04-05 14:26:03,197 | INFO | alpr.cli | Processed frames=30
-2026-04-05 14:26:05,364 | INFO | alpr.cli | Processed frames=60
-2026-04-05 14:26:07,721 | INFO | alpr.cli | Processed frames=90
-2026-04-05 14:26:09,842 | INFO | alpr.cli | Processed frames=120
-2026-04-05 14:26:12,011 | INFO | alpr.cli | Processed frames=150
-2026-04-05 14:26:14,309 | INFO | alpr.cli | Processed frames=180
-2026-04-05 14:26:17,686 | INFO | alpr.cli | Processed frames=210
-2026-04-05 14:26:20,720 | INFO | alpr.cli | Processed frames=240
-2026-04-05 14:26:23,639 | INFO | alpr.cli | Processed frames=270
-2026-04-05 14:26:26,500 | INFO | alpr.cli | Processed frames=300
-2026-04-05 14:26:30,454 | INFO | alpr.cli | Processed frames=330
-2026-04-05 14:26:33,544 | INFO | alpr.cli | Processed frames=360
-2026-04-05 14:26:36,481 | INFO | alpr.cli | Processed frames=390
-2026-04-05 14:26:39,501 | INFO | alpr.cli | Processed frames=420
-2026-04-05 14:26:43,605 | INFO | alpr.cli | Processed frames=450
-2026-04-05 14:26:45,260 | ERROR | alpr.cli | CLI crashed: OpenCV(4.11.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1295: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvDestroyAllWindows'
-Traceback (most recent call last):
-  File "C:\Users\ega02\OneDrive\Рабочий стол\ML2\src\alpr\cli.py", line 139, in main
-    run_video_mode(
-  File "C:\Users\ega02\OneDrive\Рабочий стол\ML2\src\alpr\cli.py", line 78, in run_video_mode
-    cv2.destroyAllWindows()
-cv2.error: OpenCV(4.11.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1295: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvDestroyAllWindows'
-
-2026-04-05 14:27:06,222 | INFO | alpr.cli | Video mode started | input=Video\5130_LA_City_1920x1080.mp4 output=Video\5130_LA_City_1920x1080_detected.mp4
-2026-04-05 14:27:08,373 | INFO | alpr.cli | Processed frames=30
-2026-04-05 14:27:10,783 | INFO | alpr.cli | Processed frames=60
-2026-04-05 14:27:13,718 | INFO | alpr.cli | Processed frames=90
-2026-04-05 14:27:16,707 | INFO | alpr.cli | Processed frames=120
-2026-04-05 14:27:19,690 | INFO | alpr.cli | Processed frames=150
-2026-04-05 14:27:22,601 | INFO | alpr.cli | Processed frames=180
-2026-04-05 14:27:25,646 | INFO | alpr.cli | Processed frames=210
-2026-04-05 14:27:28,590 | INFO | alpr.cli | Processed frames=240
-2026-04-05 14:27:31,444 | INFO | alpr.cli | Processed frames=270
-2026-04-05 14:27:34,439 | INFO | alpr.cli | Processed frames=300
-2026-04-05 14:27:37,483 | INFO | alpr.cli | Processed frames=330
-2026-04-05 14:27:40,322 | INFO | alpr.cli | Processed frames=360
-2026-04-05 14:27:43,271 | INFO | alpr.cli | Processed frames=390
-2026-04-05 14:27:46,164 | INFO | alpr.cli | Processed frames=420
-2026-04-05 14:27:49,058 | INFO | alpr.cli | Processed frames=450
-2026-04-05 14:27:50,227 | INFO | alpr.cli | Video mode finished | frames=462
-2026-04-05 14:34:59,449 | INFO | alpr.cli | Video mode started | input=Video\5130_LA_City_1920x1080.mp4 output=Video\5130_LA_City_1920x1080_detected_v2.mp4
-2026-04-05 14:35:01,487 | INFO | alpr.cli | Processed frames=30
-2026-04-05 14:35:03,327 | INFO | alpr.cli | Processed frames=60
-2026-04-05 14:35:05,172 | INFO | alpr.cli | Processed frames=90
-2026-04-05 14:35:06,994 | INFO | alpr.cli | Processed frames=120
-2026-04-05 14:35:08,784 | INFO | alpr.cli | Processed frames=150
-2026-04-05 14:35:10,650 | INFO | alpr.cli | Processed frames=180
-2026-04-05 14:35:12,484 | INFO | alpr.cli | Processed frames=210
-2026-04-05 14:35:14,320 | INFO | alpr.cli | Processed frames=240
-2026-04-05 14:35:16,125 | INFO | alpr.cli | Processed frames=270
-2026-04-05 14:35:17,942 | INFO | alpr.cli | Processed frames=300
-2026-04-05 14:35:19,762 | INFO | alpr.cli | Processed frames=330
-2026-04-05 14:35:21,575 | INFO | alpr.cli | Processed frames=360
-2026-04-05 14:35:23,419 | INFO | alpr.cli | Processed frames=390
-2026-04-05 14:35:25,253 | INFO | alpr.cli | Processed frames=420
-2026-04-05 14:35:27,177 | INFO | alpr.cli | Processed frames=450
-2026-04-05 14:35:27,982 | INFO | alpr.cli | Video mode finished | frames=462
-2026-04-05 14:39:09,869 | INFO | alpr.cli | Video mode started | input=Video\video1.mp4 output=Video\video1_detected.mp4
-2026-04-05 14:39:11,532 | INFO | alpr.cli | Processed frames=30
-2026-04-05 14:39:12,979 | INFO | alpr.cli | Processed frames=60
-2026-04-05 14:39:14,385 | INFO | alpr.cli | Processed frames=90
-2026-04-05 14:39:15,773 | INFO | alpr.cli | Processed frames=120
-2026-04-05 14:39:17,046 | INFO | alpr.cli | Processed frames=150
-2026-04-05 14:39:18,344 | INFO | alpr.cli | Processed frames=180
-2026-04-05 14:39:19,698 | INFO | alpr.cli | Processed frames=210
-2026-04-05 14:39:21,534 | INFO | alpr.cli | Processed frames=240
-2026-04-05 14:39:23,627 | INFO | alpr.cli | Processed frames=270
-2026-04-05 14:39:25,864 | INFO | alpr.cli | Processed frames=300
-2026-04-05 14:39:28,077 | INFO | alpr.cli | Processed frames=330
-2026-04-05 14:39:30,164 | INFO | alpr.cli | Processed frames=360
-2026-04-05 14:39:31,741 | INFO | alpr.cli | Processed frames=390
-2026-04-05 14:39:33,272 | INFO | alpr.cli | Video mode finished | frames=417
+2026-04-19 21:31:47,860 | INFO | alpr.cli | Video mode started | input=Video\video1.mp4 output=Video\video1_detected.mp4
+2026-04-19 21:32:08,178 | INFO | alpr.cli | Processed frames=30
+2026-04-19 21:32:29,936 | INFO | alpr.cli | Processed frames=60
+2026-04-19 21:32:56,433 | INFO | alpr.cli | Processed frames=90
+2026-04-19 21:33:18,831 | INFO | alpr.cli | Processed frames=120
+2026-04-19 21:33:38,326 | INFO | alpr.cli | Processed frames=150
+2026-04-19 21:33:59,600 | INFO | alpr.cli | Processed frames=180
+2026-04-19 21:34:17,459 | INFO | alpr.cli | Processed frames=210
+2026-04-19 21:34:35,505 | INFO | alpr.cli | Processed frames=240
+2026-04-19 21:34:58,411 | INFO | alpr.cli | Processed frames=270
+2026-04-19 21:35:21,915 | INFO | alpr.cli | Processed frames=300
+2026-04-19 21:35:47,601 | INFO | alpr.cli | Processed frames=330
+2026-04-19 21:36:19,928 | INFO | alpr.cli | Processed frames=360
+2026-04-19 21:36:40,860 | INFO | alpr.cli | Processed frames=390
+2026-04-19 21:36:59,365 | INFO | alpr.cli | Video mode finished | frames=417
+2026-04-19 21:39:51,622 | INFO | alpr.cli | Video mode started | input=Video\video1.mp4 output=Video\video1_detected.mp4
+2026-04-19 21:40:16,721 | INFO | alpr.cli | Processed frames=30
+2026-04-19 21:40:42,298 | INFO | alpr.cli | Processed frames=60
+2026-04-19 21:41:20,149 | INFO | alpr.cli | Processed frames=90
+2026-04-19 21:41:44,122 | INFO | alpr.cli | Processed frames=120
+2026-04-19 21:42:04,729 | INFO | alpr.cli | Processed frames=150
+2026-04-19 21:42:28,351 | INFO | alpr.cli | Processed frames=180
+2026-04-19 21:42:47,931 | INFO | alpr.cli | Processed frames=210
+2026-04-19 21:43:07,543 | INFO | alpr.cli | Processed frames=240
+2026-04-19 21:43:31,878 | INFO | alpr.cli | Processed frames=270
+2026-04-19 21:43:56,850 | INFO | alpr.cli | Processed frames=300
+2026-04-19 21:44:24,173 | INFO | alpr.cli | Processed frames=330
+2026-04-19 21:44:55,510 | INFO | alpr.cli | Processed frames=360
+2026-04-19 21:45:18,199 | INFO | alpr.cli | Processed frames=390
+2026-04-19 21:45:39,065 | INFO | alpr.cli | Video mode finished | frames=417

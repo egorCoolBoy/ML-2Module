@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "ml2-license-plate-detector"
+version = "0.1.0"
+description = "YOLO-based license plate detector with train/eval/stream modes"
+authors = ["Student <student@example.com>"]
+readme = "README.md"
+packages = [{ include = "alpr", from = "src" }]
+include = ["model_impl.py"]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+ultralytics = "^8.3.0"
+opencv-python-headless = "^4.10.0.84"
+numpy = "^1.26.4"
+pyyaml = "^6.0.2"
+wandb = "^0.19.11"
+easyocr = "^1.7.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+
+[tool.poetry.scripts]
+alpr-app = "alpr.cli:main"
+alpr-train = "alpr.train:main"
+alpr-eval = "alpr.evaluate:main"
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"

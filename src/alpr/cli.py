@@ -4,6 +4,8 @@ import argparse
 from pathlib import Path
 
 import cv2
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont
 
 from model_impl import My_LicensePlate_Model
 
@@ -12,30 +14,41 @@ from .logging_utils import get_logger
 LOGGER = get_logger(__name__)
 
 
+def _draw_text(frame: np.ndarray, text: str, x: int, y: int) -> np.ndarray:
+    """Draw UTF-8 text (including Cyrillic) on frame."""
+    pil_img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+    draw = ImageDraw.Draw(pil_img)
+
+    font = None
+    font_candidates = [
+        "C:/Windows/Fonts/arial.ttf",
+        "C:/Windows/Fonts/arialuni.ttf",
+        "C:/Windows/Fonts/tahoma.ttf",
+        "C:/Windows/Fonts/segoeui.ttf",
+    ]
+    for font_path in font_candidates:
+        try:
+            font = ImageFont.truetype(font_path, 20)
+            break
+        except Exception:
+            continue
+    if font is None:
+        font = ImageFont.load_default()
+
+    draw.text((x, y), text, font=font, fill=(0, 220, 0))
+    return cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+
+
 def _draw_detections(frame, detections: list[dict]):
     for det in detections:
         x1, y1, x2, y2 = [int(v) for v in det["bbox"]]
-        score = det["confidence"]
         plate_text = det.get("plate_text")
-        plate_text_confidence = det.get("plate_text_confidence")
         if plate_text:
-            if plate_text_confidence is not None:
-                label = f"{plate_text} {plate_text_confidence:.2f}"
-            else:
-                label = plate_text
+            label = plate_text
         else:
-            label = f"plate {score:.2f}"
+            label = "plate"
         cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 200, 0), 2)
-        cv2.putText(
-            frame,
-            label,
-            (x1, max(y1 - 10, 0)),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.5,
-            (0, 200, 0),
-            1,
-            cv2.LINE_AA,
-        )
+        frame = _draw_text(frame, label, x1, max(y1 - 28, 0))
     return frame
 
 
@@ -134,8 +147,19 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--no-ocr", action="store_true", help="Disable OCR on detected plates")
     parser.add_argument(
         "--ocr-languages",
-        default="en,ru",
+        default="ru,en",
         help="Comma-separated OCR languages for EasyOCR, for example en,ru",
+    )
+    parser.add_argument(
+        "--ocr-min-score",
+        type=float,
+        default=0.25,
+        help="Minimum combined score to accept OCR plate text (lower helps live camera).",
+    )
+    parser.add_argument(
+        "--ocr-fast",
+        action="store_true",
+        help="Fewer image variants for OCR (faster realtime, slightly less accurate).",
     )
     return parser
 
@@ -152,6 +176,8 @@ def main() -> None:
             device=args.device,
             enable_ocr=not args.no_ocr,
             ocr_languages=args.ocr_languages,
+            ocr_min_score=args.ocr_min_score,
+            ocr_fast=args.ocr_fast,
         )
         if args.mode == "video":
             run_video_mode(

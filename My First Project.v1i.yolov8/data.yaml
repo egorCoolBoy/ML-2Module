@@ -1,6 +1,9 @@
-train: ../train/images
-val: ../valid/images
-test: ../test/images
+path: .
+train: train/images
+# Raw Roboflow export contains only the train split.
+# The project script creates valid/test splits automatically in data/dataset.
+val: train/images
+test: train/images
 
 nc: 1
 names: ['number']

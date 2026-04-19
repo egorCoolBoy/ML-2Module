@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  alpr-video:
+    build: .
+    image: ml2-alpr:latest
+    command:
+      [
+        "python",
+        "app.py",
+        "--mode",
+        "video",
+        "--source",
+        "data/input.mp4",
+        "--output",
+        "data/output.mp4",
+      ]
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+
+  alpr-camera:
+    build: .
+    image: ml2-alpr:latest
+    command:
+      [
+        "python",
+        "app.py",
+        "--mode",
+        "camera",
+        "--camera-index",
+        "0",
+      ]
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    devices:
+      - "/dev/video0:/dev/video0"
